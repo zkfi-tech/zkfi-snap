@@ -1,0 +1,11 @@
+dist
+build
+.idea
+*.log
+node_modules
+docs
+out
+test-results
+.rollup.cache
+playwright-report
+.wireit

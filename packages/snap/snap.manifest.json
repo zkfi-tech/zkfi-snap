@@ -1,0 +1,29 @@
+{
+  "version": "0.1.0",
+  "description": "Snap to interact with zkFi powered apps",
+  "proposedName": "zkFi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zkfi-tech/zkfi-snap.git"
+  },
+  "source": {
+    "shasum": "/qq9L3orAGbhnIH5Zum31X9nzM42F/g2U13DllN4lr8=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "iconPath": "images/icon.svg",
+        "packageName": "@zkfi-tech/snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "snap_dialog": {},
+    "snap_getEntropy": {},
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": false
+    }
+  },
+  "manifestVersion": "0.1"
+}

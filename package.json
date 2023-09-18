@@ -1,0 +1,27 @@
+{
+  "name": "root",
+  "author": "Naveen Sahu <nvnx@zkfi.tech>",
+  "description": "Metamask Snap to interact with zkFi powered apps",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zkfi-tech/zkfi-snap.git"
+  },
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "packageManager": "pnpm@8.7.6",
+  "keywords": [
+    "ethereum",
+    "zk",
+    "privacy",
+    "zkfi",
+    "metamask"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
