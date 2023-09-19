@@ -8,17 +8,15 @@ type State = {
   isFlask: boolean;
   isInstalled: boolean;
   snapInfo?: SnapInfo;
-  //   error?: Error;
 };
 
-const snapId = 'local:http://localhost:8080';
+const snapId = 'npm:@zkfi-tech/snap'; // 'local:http://localhost:8080';
 const snap = new SnapAdapter(snapId);
 
 const initialState: State = {
   snap,
   isInstalled: false,
   isFlask: false,
-  //   error: undefined,
 };
 
 export const SnapContext = createContext<State>(initialState);
@@ -43,12 +41,6 @@ const reducer: Reducer<State, ActionDispatch> = (state, action) => {
         ...state,
         isFlask: action.payload,
       };
-
-    // case Actions.SetError:
-    //   return {
-    //     ...state,
-    //     error: action.payload,
-    //   };
 
     default:
       return state;
@@ -82,25 +74,6 @@ export const SnapProvider = ({ children }: { children: ReactNode }) => {
       detectSnapInstalled();
     }
   }, [state.isFlask]);
-
-  //   useEffect(() => {
-  //     let timeoutId: number;
-
-  //     if (state.error) {
-  //       timeoutId = window.setTimeout(() => {
-  //         dispatch({
-  //           type: Actions.SetError,
-  //           payload: undefined,
-  //         });
-  //       }, 10000);
-  //     }
-
-  //     return () => {
-  //       if (timeoutId) {
-  //         window.clearTimeout(timeoutId);
-  //       }
-  //     };
-  //   }, [state.error]);
 
   if (typeof window === 'undefined') {
     return <>{children}</>;
