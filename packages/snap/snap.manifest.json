@@ -7,11 +7,11 @@
     "url": "https://github.com/zkfi-tech/zkfi-snap.git"
   },
   "source": {
-    "shasum": "BIYPWWOS2PotvlCSSkGsuIrKtg8apZxaHJEv3qrUngk=",
+    "shasum": "hUVKZ22bTiqIp6+6x+3wpWio9vC5hqoCK7PGk89XZUg=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
-        "iconPath": "images/icon.svg",
+        "iconPath": "images/logo.svg",
         "packageName": "@zkfi-tech/snap",
         "registry": "https://registry.npmjs.org/"
       }

@@ -7,7 +7,7 @@ import {
   Snap,
 } from './types';
 
-export const defaultSnapId = 'npm:@zkfi-tech/metamask-snap';
+export const defaultSnapId = 'npm:@zkfi-tech/snap';
 
 export class SnapAdapter {
   id: string;

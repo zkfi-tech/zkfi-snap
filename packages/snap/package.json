@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/zkfi-tech/zkfi-snap.git"
   },
-  "license": "(MIT-0 OR Apache-2.0)",
+  "license": "MIT",
   "main": "src/index.ts",
   "files": [
     "dist/",
