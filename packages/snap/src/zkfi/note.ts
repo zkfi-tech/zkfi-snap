@@ -1,7 +1,7 @@
 import poseidon from '../circomlib/poseidon';
 
 export type NoteData = {
-  assetId: string;
+  assetId: number;
   value: string;
   owner: string;
 };

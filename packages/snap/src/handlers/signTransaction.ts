@@ -1,19 +1,38 @@
 import { OnRpcRequestHandler } from '@metamask/snaps-types';
 import { divider, heading, panel, text } from '@metamask/snaps-ui';
+import { assetIdToName } from '../utils';
 import { Account, NoteData } from '../zkfi';
 
-export const signTransactionHandler: OnRpcRequestHandler = async ({ origin, request }) => {
-  const notes = (request.params as any).notes as NoteData[];
+type Payload = {
+  in: NoteData[];
+  out: NoteData[];
+};
 
-  const assetMap: Record<string, bigint> = {};
-  notes.forEach((note) => {
-    const assetId = note.assetId.toLowerCase();
-    assetMap[assetId] = BigInt(assetMap[assetId] || '0') + BigInt(note.value);
+export const signTransactionHandler: OnRpcRequestHandler = async ({ origin, request }) => {
+  const notes = (request.params as any).notes as Payload;
+
+  const inNoteValues: Record<number, bigint> = {};
+  const outNoteValues: Record<number, bigint> = {};
+  notes.in.forEach((note) => {
+    const assetId = note.assetId;
+    inNoteValues[assetId] = BigInt(inNoteValues[assetId] || '0') + BigInt(note.value);
+  });
+
+  notes.out.forEach((note) => {
+    const assetId = note.assetId;
+    outNoteValues[assetId] = BigInt(outNoteValues[assetId] || '0') + BigInt(note.value);
   });
 
   const assetPanelData: any = [];
-  Object.keys(assetMap).forEach((assetId) => {
-    assetPanelData.push(text(`${assetId.slice(0, 8)}: ${assetMap[assetId]}`), divider());
+  Object.keys(inNoteValues).forEach((assetId: any) => {
+    const assetName = assetIdToName[assetId] || `${assetId}`;
+
+    const value = inNoteValues[assetId] - (outNoteValues[assetId] || BigInt(0));
+    if (value < BigInt(0)) {
+      throw new Error(`Not enough ${assetName} to spend!`);
+    }
+
+    assetPanelData.push(text(`${assetName}: ${value}`), divider());
   });
 
   const approved = await snap.request({
@@ -35,5 +54,5 @@ export const signTransactionHandler: OnRpcRequestHandler = async ({ origin, requ
   }
 
   const acc = await Account.generate();
-  return acc.signNotes(notes);
+  return acc.signNotes(notes.in);
 };

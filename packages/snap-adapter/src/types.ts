@@ -21,6 +21,8 @@ export type NoteData = {
   owner: string;
 };
 
+export type SignTransactionPayload = { in: NoteData[]; out: NoteData[] };
+
 export interface SchnorrSignature {
   e: string;
   s: string;
