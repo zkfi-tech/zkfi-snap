@@ -1,5 +1,11 @@
 import { rpcMethod as rpc } from './rpcMethods';
-import { GetSnapsResponse, NoteData, RequestParams, SchnorrSignature, Snap } from './types';
+import {
+  GetSnapsResponse,
+  RequestParams,
+  SchnorrSignature,
+  SignTransactionPayload,
+  Snap,
+} from './types';
 
 export const defaultSnapId = 'npm:@zkfi-tech/metamask-snap';
 
@@ -18,7 +24,7 @@ export class SnapAdapter {
     return this.sendRequest({ method: rpc.SIGN_MESSAGE, params: { message } });
   }
 
-  async signTransaction(notes: NoteData[]): Promise<SchnorrSignature[]> {
+  async signTransaction(notes: SignTransactionPayload): Promise<SchnorrSignature[]> {
     const signs = await this.sendRequest({ method: rpc.SIGN_TRANSACTION, params: { notes } });
     return signs;
   }
