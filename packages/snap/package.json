@@ -24,7 +24,11 @@
     "lint:fix": "pnpm run lint:eslint --fix && pnpm run lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
-    "start": "mm-snap watch"
+    "start": "mm-snap watch",
+    "prepublish": "pnpm run build:clean",
+    "publish:patch": "pnpm version patch && pnpm publish",
+    "publish:minor": "pnpm version minor && pnpm publish",
+    "publish:major": "pnpm version major && pnpm publish"
   },
   "dependencies": {
     "@metamask/snaps-types": "^0.32.2",
