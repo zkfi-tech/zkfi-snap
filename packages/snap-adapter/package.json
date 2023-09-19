@@ -1,0 +1,42 @@
+{
+  "name": "@zkfi-tech/snap-adapter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Adapter to zkFi Metamask Snap",
+  "author": "Naveen Sahu <nvnx@zkfi.tech>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zkfi-tech/zkfi-snap.git"
+  },
+  "license": "(MIT-0 OR Apache-2.0)",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "ts-mocha -p tsconfig.json tests/**/*.test.ts",
+    "publish:github": "pnpm run build && pnpm publish"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "chai": "^4.3.7",
+    "eslint": "^8.32.0",
+    "ts-mocha": "^10.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "packageManager": "pnpm@8.7.6",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
