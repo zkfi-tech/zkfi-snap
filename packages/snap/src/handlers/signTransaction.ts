@@ -1,6 +1,6 @@
 import { OnRpcRequestHandler } from '@metamask/snaps-types';
 import { divider, heading, panel, text } from '@metamask/snaps-ui';
-import { assetIdToName } from '../utils';
+import { assetInfo, formatUnits } from '../utils';
 import { Account, NoteData } from '../zkfi';
 
 type Payload = {
@@ -25,14 +25,17 @@ export const signTransactionHandler: OnRpcRequestHandler = async ({ origin, requ
 
   const assetPanelData: any = [];
   Object.keys(inNoteValues).forEach((assetId: any) => {
-    const assetName = assetIdToName[assetId] || `${assetId}`;
+    const assetLabel = assetInfo[assetId]?.symbol || `${assetId}`;
 
-    const value = inNoteValues[assetId] - (outNoteValues[assetId] || BigInt(0));
+    let value = inNoteValues[assetId] - (outNoteValues[assetId] || BigInt(0));
     if (value < BigInt(0)) {
-      throw new Error(`Not enough ${assetName} to spend!`);
+      value = BigInt(0);
+      // throw new Error(`Not enough ${assetName} to spend!`);
     }
 
-    assetPanelData.push(text(`${assetName}: ${value}`), divider());
+    const valueLabel = formatUnits(value, assetInfo[assetId]?.decimals || 18);
+
+    assetPanelData.push(text(`**${assetLabel}**: ${valueLabel}`), divider());
   });
 
   const approved = await snap.request({
@@ -42,7 +45,7 @@ export const signTransactionHandler: OnRpcRequestHandler = async ({ origin, requ
       content: panel([
         heading('Sign Transaction'),
         divider(),
-        text(`${origin} is requesting signature to spend following assets:`),
+        text(`${origin} is requesting signature to spend following of your assets:`),
         panel(assetPanelData),
         text(`**Only sign if you trust the website.**`),
       ]),
@@ -50,7 +53,7 @@ export const signTransactionHandler: OnRpcRequestHandler = async ({ origin, requ
   });
 
   if (!approved) {
-    throw new Error('Signature denied for transaction!');
+    throw new Error('Signature denied for transaction');
   }
 
   const acc = await Account.generate();
