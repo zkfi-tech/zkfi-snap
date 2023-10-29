@@ -10,7 +10,8 @@ type State = {
   snapInfo?: SnapInfo;
 };
 
-const snapId = 'npm:@zkfi-tech/snap'; // 'local:http://localhost:8080';
+// const snapId = 'local:http://localhost:8080';
+const snapId = 'npm:@zkfi-tech/snap';
 const snap = new SnapAdapter(snapId);
 
 const initialState: State = {

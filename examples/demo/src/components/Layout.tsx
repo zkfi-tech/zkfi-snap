@@ -2,6 +2,7 @@ import { Box, HStack, StackProps, Text } from '@chakra-ui/react';
 import { FC } from 'react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import ConnectSnapButton from './examples/ConnectSnapButton';
+import { Logo } from './Logo';
 
 const Layout: FC<StackProps> = ({ children, ...props }) => {
   return (
@@ -12,10 +13,15 @@ const Layout: FC<StackProps> = ({ children, ...props }) => {
         borderBottomColor="whiteAlpha.400"
         borderBottomWidth={1}
       >
-        <Text>zkFi Snap</Text>
+        <HStack spacing={8}>
+          <Logo />
+          <Text fontWeight="bold" fontSize="3xl">
+            zkFi Snap
+          </Text>
+        </HStack>
         <HStack spacing={4}>
           <ConnectSnapButton />
-          <ColorModeSwitcher />
+          <ColorModeSwitcher />L
         </HStack>
       </HStack>
       <Box w="full">{children}</Box>
