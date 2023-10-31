@@ -1,6 +1,6 @@
 {
   "name": "@zkfi-tech/snap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Metamask Snap to interact with zkFi powered apps",
   "author": "Naveen Sahu <nvnx@zkfi.tech>",
   "repository": {
