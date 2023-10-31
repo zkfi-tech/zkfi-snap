@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Snap to interact with zkFi powered apps",
   "proposedName": "zkFi",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/zkfi-tech/zkfi-snap.git"
   },
   "source": {
-    "shasum": "AsdclIBYKLSnQzLYTa2XCP6BT+KLwDQWxzesyNkJbX8=",
+    "shasum": "Sxs919RCWhOg6QWbQL0YUWS525SQElLhF9HXPkoGc2g=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
