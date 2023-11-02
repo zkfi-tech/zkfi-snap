@@ -33,7 +33,7 @@ export const signTransactionHandler: OnRpcRequestHandler = async ({ origin, requ
       // throw new Error(`Not enough ${assetName} to spend!`);
     }
 
-    const valueLabel = formatUnits(value, assetInfo[assetId]?.decimals || 18);
+    const valueLabel = formatUnits(value, assetInfo[assetId]?.decimals || 18, 8);
 
     assetPanelData.push(text(`**${assetLabel}**: ${valueLabel}`), divider());
   });
