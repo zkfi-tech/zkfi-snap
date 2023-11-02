@@ -7,7 +7,7 @@
     "url": "https://github.com/zkfi-tech/zkfi-snap.git"
   },
   "source": {
-    "shasum": "Sxs919RCWhOg6QWbQL0YUWS525SQElLhF9HXPkoGc2g=",
+    "shasum": "f4SZm5Oz7GKcwzndxH9BTtf5GAVVOlVBpXKqnpUQnPw=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
