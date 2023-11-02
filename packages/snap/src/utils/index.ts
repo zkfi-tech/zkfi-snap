@@ -26,5 +26,6 @@ export const requestEntropy = async () => {
 };
 
 export const formatUnits = (value: bigint, decimals: number, precision: number = 4) => {
-  return Number((value * BigInt(10 ** precision)) / BigInt(10 ** decimals)) / 10 ** precision;
+  const x = Number((value * BigInt(10 ** precision)) / BigInt(10 ** decimals)) / 10 ** precision;
+  return `${x}`;
 };
